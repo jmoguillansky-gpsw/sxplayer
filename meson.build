@@ -57,6 +57,9 @@ lib_deps = [
   dependency('libavcodec', version: '>= 58.18.100'),
   dependency('libavutil', version: '>= 56.14.100'),
 ]
+if (cc.get_id() == 'msvc')
+  lib_deps += dependency('libpthreads')
+endif
 
 vaapi_dep = dependency('libva', version: '>= 1.1.0', required: get_option('vaapi'))
 if vaapi_dep.found()
